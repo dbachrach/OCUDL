@@ -1,0 +1,14 @@
+PODS:
+  - OCUDL (0.1.0)
+
+DEPENDENCIES:
+  - OCUDL (from `../OCUDL.podspec`)
+
+EXTERNAL SOURCES:
+  OCUDL:
+    :path: ../OCUDL.podspec
+
+SPEC CHECKSUMS:
+  OCUDL: be18baa4be750fb4348c5b87b4302d2ab4bf623d
+
+COCOAPODS: 0.26.2
