@@ -38,6 +38,60 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
+		<key>72D4D956EF7D4836BF6AC4D9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>9E4647AC91284ECCA24B6E7D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
 		<key>A60F698017354BB6A8D29AE5</key>
 		<dict>
 			<key>fileRef</key>
@@ -568,6 +622,7 @@ fi
 				<string>DA9E85B3180CF8F70034193E</string>
 				<string>DA9E85B5180CF8F70034193E</string>
 				<string>DA9E85B4180CF8F70034193E</string>
+				<string>EA51BE73D539494CA00417F2</string>
 			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
@@ -593,9 +648,11 @@ fi
 			<string>DA9E85C5180CF8F70034193E</string>
 			<key>buildPhases</key>
 			<array>
+				<string>9E4647AC91284ECCA24B6E7D</string>
 				<string>DA9E85AD180CF8F70034193E</string>
 				<string>DA9E85AE180CF8F70034193E</string>
 				<string>DA9E85AF180CF8F70034193E</string>
+				<string>72D4D956EF7D4836BF6AC4D9</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -988,6 +1045,8 @@ fi
 		</dict>
 		<key>DA9E85C6180CF8F70034193E</key>
 		<dict>
+			<key>baseConfigurationReference</key>
+			<string>01049FFA44444CBBB2C92880</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ARCHS</key>
@@ -1025,6 +1084,8 @@ fi
 		</dict>
 		<key>DA9E85C7180CF8F70034193E</key>
 		<dict>
+			<key>baseConfigurationReference</key>
+			<string>01049FFA44444CBBB2C92880</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ARCHS</key>
@@ -1078,6 +1139,13 @@ fi
 </string>
 			<key>showEnvVarsInLog</key>
 			<string>0</string>
+		</dict>
+		<key>EA51BE73D539494CA00417F2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0AA109B2F4E34D41A94E6585</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

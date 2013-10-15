@@ -164,15 +164,19 @@
 										 }];
 }
 
+static dispatch_once_t s_pred;
+
 + (void)use
 {
-	[OCUDLBuiltins registerNSNull];
-	[OCUDLBuiltins registerNSURL];
-	[OCUDLBuiltins registerNSUUID];
-	[OCUDLBuiltins registerUIColor];
-	[OCUDLBuiltins registerUIImage];
-	[OCUDLBuiltins registerUINib];
-	[OCUDLBuiltins registerUIStoryboard];
+	dispatch_once(&s_pred, ^{
+		[OCUDLBuiltins registerNSNull];
+		[OCUDLBuiltins registerNSURL];
+		[OCUDLBuiltins registerNSUUID];
+		[OCUDLBuiltins registerUIColor];
+		[OCUDLBuiltins registerUIImage];
+		[OCUDLBuiltins registerUINib];
+		[OCUDLBuiltins registerUIStoryboard];
+	});
 }
 
 @end

@@ -8,6 +8,18 @@
 
 #import "OCUDLManager.h"
 
+#import <objc/runtime.h>
+#import <objc/message.h>
+
+// TODO: uuidgen in terminal
+
+void Swizzle(Class c, SEL orig, SEL new)
+{
+    Method origMethod = class_getClassMethod(c, orig);
+    Method newMethod = class_getClassMethod(c, new);
+	method_exchangeImplementations(origMethod, newMethod);
+}
+
 
 @implementation OCUDLManager
 
@@ -29,6 +41,10 @@ static OCUDLManager *s_manager = nil;
 	{
 		self.prefixMapping = [[NSMutableDictionary alloc] init];
 		self.suffixMapping = [[NSMutableDictionary alloc] init];
+
+		Swizzle([NSString class],
+			@selector(stringWithUTF8String:),
+			@selector(ocudlStringWithUTF8String:));
 	}
 	return self;
 }

@@ -1,3 +1,5 @@
 platform :ios, '7.0'
 
+link_with ['OCUDLExample', 'OCUDLExampleTests']
+
 pod 'OCUDL', :path => '../OCUDL.podspec'

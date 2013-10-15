@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+OCUDL.h"
 
 
 typedef id (^OCUDLBlock)(NSString*, NSString*);

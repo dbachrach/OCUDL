@@ -9,26 +9,8 @@
 #import "NSString+OCUDL.h"
 #import "OCUDLManager.h"
 #import <objc/runtime.h>
-#import <objc/message.h>
-
-// TODO: uuidgen in terminal
-
-void Swizzle(Class c, SEL orig, SEL new)
-{
-    Method origMethod = class_getClassMethod(c, orig);
-    Method newMethod = class_getClassMethod(c, new);
-	method_exchangeImplementations(origMethod, newMethod);
-}
-
 
 @implementation NSString (OCUDL)
-
-+ (void)load
-{
-	Swizzle([NSString class],
-			@selector(stringWithUTF8String:),
-			@selector(ocudlStringWithUTF8String:));
-}
 
 + (id)ocudlStringWithUTF8String:(const char *)nullTerminatedCString
 {
