@@ -2,3 +2,6 @@ language: objective-c
 
 before_install:
   - cd OCUDLExample
+
+script: xctool -workspace OCUDLExample.xcworkspace -scheme 'OCUDLExample' -configuration Debug \
+-sdk iphonesimulator -arch i386 build
