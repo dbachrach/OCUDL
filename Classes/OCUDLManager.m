@@ -11,8 +11,6 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-// TODO: uuidgen in terminal
-
 void Swizzle(Class c, SEL orig, SEL new)
 {
     Method origMethod = class_getClassMethod(c, orig);
