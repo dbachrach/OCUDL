@@ -3,5 +3,4 @@ language: objective-c
 before_install:
   - cd OCUDLExample
 
-xcode_workspace: OCUDLExample.xcworkspace
-xcode_scheme: OCUDLExample
+script: xctool -workspace OCUDLExample.xcworkspace -scheme 'OCUDLExample' -configuration Debug -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO test
