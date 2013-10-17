@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Built-in user defined literals
+ */
 @interface OCUDLBuiltins : NSObject
 
+/**
+ * Enable all built-in user defined literals.
+ * Must call this method before any user defined literal is created.
+ */
 + (void)use;
 
 @end
