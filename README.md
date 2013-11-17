@@ -5,7 +5,7 @@ OCUDL is an experiment to bring user defined literals to Objective-C. A literal 
  
 Literals are usually baked right in to the compiler. OCUDL, however, does not extend the compiler; it simply uses what already exists in the Objective-C runtime. You can learn more about OCUDL's internals at [OCUDL In Depth](http://dbachrach.com/posts/ocudl-in-depth/).
 
-The [OCUDL source](https://github.com/dbachrach/OCUDL) is available on GitHub under the [MIT License](http://opensource.org/licenses/MIT). Pull requests, bugs, and issues are welcome.
+The [OCUDL source](https://github.com/dbachrach/OCUDL) is available on GitHub under the [MIT License](http://opensource.org/licenses/MIT). Documentation is at [CocoaDocs](http://cocoadocs.org/docsets/OCUDL/). Pull requests, bugs, and issues are welcome.
 
 ## Example
 
