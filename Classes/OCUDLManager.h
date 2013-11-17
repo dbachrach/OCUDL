@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+OCUDL.h"
-
 
 /**
  * Invoked when a user defined literal should be created.
@@ -53,6 +51,8 @@ typedef id (^OCUDLBlock)(NSString*, NSString*);
  * All registrations should occur on this manager.
  */
 + (instancetype)defaultManager;
+
++ (id)objectWithUTF8String:(const char *)nullTerminatedCString;
 
 // All prefixes
 @property (strong, nonatomic) NSMutableDictionary *prefixMapping;
