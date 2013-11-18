@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+OCUDL.h"
 
 
 /**
@@ -93,6 +92,8 @@ typedef id (^OCUDLBlock)(NSString*, NSString*);
  * @param block The block to execute when a literal is found.
  */
 - (void)registerSuffix:(NSString*)suffix forBlock:(OCUDLBlock)block;
+
+- (id)objectForLiteralString:(NSString *)str;
 
 @end
 
