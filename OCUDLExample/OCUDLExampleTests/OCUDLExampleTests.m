@@ -87,4 +87,15 @@
 						  @"https://apple.com is equal");
 }
 
+- (void)testNSSet
+{
+    NSSet *expected = [NSSet setWithObjects:@"string", @"another", nil];
+    NSSet *set = $(set:@"string,another");
+    XCTAssertEqualObjects(set, expected, @"NSSets are equal");
+    
+    expected = [NSMutableSet setWithObjects:@"string in mutable", @"another", nil];
+    NSMutableSet *mset = $(mset:@"string in mutable,another");
+    XCTAssertEqualObjects(mset, expected, @"NSMutableSets are equal");
+}
+
 @end
