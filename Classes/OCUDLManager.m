@@ -38,7 +38,9 @@ static OCUDLManager *s_manager = nil;
 
 - (void)registerPrefix:(NSString*)prefix forClass:(Class<OCUDLClass>)class
 {
-	self.prefixMapping[prefix] = class;
+    [self registerPrefix:prefix forBlock:^id(NSString *str, NSString *prefStr) {
+        return (id)[[(Class)class alloc] initWithLiteral:str prefix:prefStr];
+    }];
 }
 
 - (void)registerPrefix:(NSString*)prefix forBlock:(OCUDLBlock)block
@@ -48,7 +50,9 @@ static OCUDLManager *s_manager = nil;
 
 - (void)registerSuffix:(NSString*)suffix forClass:(Class<OCUDLClass>)class
 {
-	self.suffixMapping[suffix] = class;
+    [self registerSuffix:suffix forBlock:^id(NSString *str, NSString *suffStr) {
+        return (id)[[(Class)class alloc] initWithLiteral:str suffix:suffStr];
+    }];
 }
 
 - (void)registerSuffix:(NSString*)suffix forBlock:(OCUDLBlock)block
@@ -67,18 +71,8 @@ static OCUDLManager *s_manager = nil;
             
             str = [str substringFromIndex:[prefix length]];
             
-            id mapping = prefixMapping[prefix];
-            
-            // http://stackoverflow.com/questions/6536244/check-if-object-is-class-type
-            if (class_isMetaClass(object_getClass(mapping))) {
-                Class class = mapping;
-                id<OCUDLClass> literalClass = [class alloc];
-                return (id)[literalClass initWithLiteral:str prefix:prefix];
-            }
-            else if ([mapping isKindOfClass:NSClassFromString(@"NSBlock")]) {
-                OCUDLBlock block = mapping;
-                return block(str, prefix);
-            }
+            OCUDLBlock block = prefixMapping[prefix];
+            return block(str, prefix);
         }
     }
     
@@ -92,18 +86,8 @@ static OCUDLManager *s_manager = nil;
             
             str = [str substringToIndex:[str length] - [suffix length]];
             
-            id mapping = suffixMapping[suffix];
-            
-            // http://stackoverflow.com/questions/6536244/check-if-object-is-class-type
-            if (class_isMetaClass(object_getClass(mapping))) {
-                Class class = mapping;
-                id<OCUDLClass> literalClass = [class alloc];
-                return (id)[literalClass initWithLiteral:str suffix:suffix];
-            }
-            else if ([mapping isKindOfClass:NSClassFromString(@"NSBlock")]) {
-                OCUDLBlock block = mapping;
-                return block(str, suffix);
-            }
+            OCUDLBlock block = suffixMapping[suffix];
+            return block(str, suffix);
         }
     }
     return nil;
