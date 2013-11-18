@@ -27,6 +27,13 @@
     [super tearDown];
 }
 
+- (void)testStringizedArguments
+{
+    NSSet *stringizedSet = $(set:@"a",@"b",@"c space");
+    NSSet *set = $(set:a,b,c space);
+    XCTAssertEqualObjects(stringizedSet, set, @"Stringized NSSets are equal");
+}
+
 - (void)testNSNull
 {
 	XCTAssertEqualObjects($(null), [NSNull null], @"");
@@ -93,12 +100,13 @@
     
     NSSet *set = $(set:a,b);
     XCTAssertEqualObjects(set, expected, @"NSSets are equal");
+}
+
+- (void)testNSMutableSet
+{
+    NSMutableSet *expected = [NSMutableSet setWithObjects:@"string with spaces", @"another", nil];
     
-    NSSet *stringizedSet = $(set:@"a",@"b");
-    XCTAssertEqualObjects(stringizedSet, expected, @"Stringized NSSets match expected");
-    
-    expected = [NSMutableSet setWithObjects:@"string in mutable", @"another", nil];
-    NSMutableSet *mset = $(mset:string in mutable,another);
+    NSMutableSet *mset = $(mset:string with spaces,another);
     XCTAssertEqualObjects(mset, expected, @"NSMutableSets are equal");
 }
 
