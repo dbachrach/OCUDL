@@ -11,13 +11,6 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-void Swizzle(Class c, SEL orig, SEL new)
-{
-    Method origMethod = class_getClassMethod(c, orig);
-    Method newMethod = class_getClassMethod(c, new);
-	method_exchangeImplementations(origMethod, newMethod);
-}
-
 
 @implementation OCUDLManager
 
@@ -39,17 +32,15 @@ static OCUDLManager *s_manager = nil;
 	{
 		self.prefixMapping = [[NSMutableDictionary alloc] init];
 		self.suffixMapping = [[NSMutableDictionary alloc] init];
-
-		Swizzle([NSString class],
-			@selector(stringWithUTF8String:),
-			@selector(ocudlStringWithUTF8String:));
 	}
 	return self;
 }
 
 - (void)registerPrefix:(NSString*)prefix forClass:(Class<OCUDLClass>)class
 {
-	self.prefixMapping[prefix] = class;
+    [self registerPrefix:prefix forBlock:^id(NSString *str, NSString *prefStr) {
+        return (id)[[(Class)class alloc] initWithLiteral:str prefix:prefStr];
+    }];
 }
 
 - (void)registerPrefix:(NSString*)prefix forBlock:(OCUDLBlock)block
@@ -59,12 +50,47 @@ static OCUDLManager *s_manager = nil;
 
 - (void)registerSuffix:(NSString*)suffix forClass:(Class<OCUDLClass>)class
 {
-	self.suffixMapping[suffix] = class;
+    [self registerSuffix:suffix forBlock:^id(NSString *str, NSString *suffStr) {
+        return (id)[[(Class)class alloc] initWithLiteral:str suffix:suffStr];
+    }];
 }
 
 - (void)registerSuffix:(NSString*)suffix forBlock:(OCUDLBlock)block
 {
 	self.suffixMapping[suffix] = block;
+}
+
+- (id)objectForLiteralString:(NSString *)str {
+    NSMutableDictionary *prefixMapping = [OCUDLManager defaultManager].prefixMapping;
+    NSArray *sortedPrefixMappingKeys = [[prefixMapping allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return[@([obj1 length]) compare:@([obj2 length])];
+    }];
+    
+    for (NSString *prefix in sortedPrefixMappingKeys) {
+        if ([str hasPrefix:prefix]) {
+            
+            str = [str substringFromIndex:[prefix length]];
+            
+            OCUDLBlock block = prefixMapping[prefix];
+            return block(str, prefix);
+        }
+    }
+    
+    NSMutableDictionary *suffixMapping = [OCUDLManager defaultManager].suffixMapping;
+    NSArray *sortedSuffixMappingKeys = [[suffixMapping allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return[@([obj2 length]) compare:@([obj1 length])];
+    }];
+    
+    for (NSString *suffix in sortedSuffixMappingKeys) {
+        if ([str hasSuffix:suffix]) {
+            
+            str = [str substringToIndex:[str length] - [suffix length]];
+            
+            OCUDLBlock block = suffixMapping[suffix];
+            return block(str, suffix);
+        }
+    }
+    return nil;
 }
 
 @end
