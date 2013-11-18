@@ -89,9 +89,13 @@
 
 - (void)testNSSet
 {
-    NSSet *expected = [NSSet setWithObjects:@"string", @"another", nil];
-    NSSet *set = $(set:string,another);
+    NSSet *expected = [NSSet setWithObjects:@"a", @"b", nil];
+    
+    NSSet *set = $(set:a,b);
     XCTAssertEqualObjects(set, expected, @"NSSets are equal");
+    
+    NSSet *stringizedSet = $(set:@"a",@"b");
+    XCTAssertEqualObjects(stringizedSet, expected, @"Stringized NSSets match expected");
     
     expected = [NSMutableSet setWithObjects:@"string in mutable", @"another", nil];
     NSMutableSet *mset = $(mset:string in mutable,another);
