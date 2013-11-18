@@ -164,6 +164,26 @@
 										 }];
 }
 
++ (void)registerNSSet
+{
+    OCUDLBlock setBlock = ^id(NSString *literal, NSString *prefix) {
+        // This is in case they stringized their literal i.e. set: @"a", @"b"
+        // This will also work without stringizing i.e. set: a, b
+        literal = [literal stringByReplacingOccurrencesOfString:@"@" withString:@""];
+        literal = [literal stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        
+        // Split components based on a string
+        NSArray *components = [literal componentsSeparatedByString:@","];
+        if ([prefix isEqualToString:@"set:"]) {
+            return [NSSet setWithArray:components];
+        } else {
+            return [NSMutableSet setWithArray:components];
+        }
+	};
+    [[OCUDLManager defaultManager] registerPrefix:@"set:" forBlock:setBlock];
+    [[OCUDLManager defaultManager] registerPrefix:@"mset:" forBlock:setBlock];
+}
+
 static dispatch_once_t s_pred;
 
 + (void)use
@@ -176,6 +196,7 @@ static dispatch_once_t s_pred;
 		[OCUDLBuiltins registerUIImage];
 		[OCUDLBuiltins registerUINib];
 		[OCUDLBuiltins registerUIStoryboard];
+        [OCUDLBuiltins registerNSSet];
 	});
 }
 
