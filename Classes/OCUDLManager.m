@@ -11,6 +11,16 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+@interface OCUDLManager ()
+
+/// All prefixes
+@property (strong, nonatomic) NSMutableDictionary *prefixMapping;
+
+/// All suffixes
+@property (strong, nonatomic) NSMutableDictionary *suffixMapping;
+
+@end
+
 @implementation OCUDLManager
 
 static dispatch_once_t s_pred;
@@ -35,6 +45,8 @@ static OCUDLManager *s_manager = nil;
 	return self;
 }
 
+#pragma mark - Registration
+
 - (void)registerPrefix:(NSString*)prefix forClass:(Class<OCUDLClass>)class
 {
 	self.prefixMapping[prefix] = class;
@@ -57,7 +69,7 @@ static OCUDLManager *s_manager = nil;
 
 #pragma mark - Object Emitter
 
-+ (id)objectWithUTF8String:(const char *)nullTerminatedCString
+- (id)objectForLiteralString:(const char *)nullTerminatedCString
 {
 	NSString *str = [NSString stringWithUTF8String:nullTerminatedCString];
 	

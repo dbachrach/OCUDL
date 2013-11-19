@@ -52,14 +52,6 @@ typedef id (^OCUDLBlock)(NSString*, NSString*);
  */
 + (instancetype)defaultManager;
 
-+ (id)objectWithUTF8String:(const char *)nullTerminatedCString;
-
-// All prefixes
-@property (strong, nonatomic) NSMutableDictionary *prefixMapping;
-
-// All suffixes
-@property (strong, nonatomic) NSMutableDictionary *suffixMapping;
-
 /**
  * Registers a user defined literal for a prefix.
  * When a literal is found that matches the prefix, the class is constructed
@@ -93,6 +85,14 @@ typedef id (^OCUDLBlock)(NSString*, NSString*);
  * @param block The block to execute when a literal is found.
  */
 - (void)registerSuffix:(NSString*)suffix forBlock:(OCUDLBlock)block;
+
+/**
+ * Creates an object from a literal string.
+ * If a literal is not found, returns nil.
+ * @param nullTerminatedCString The string literal
+ * @return The created object based on the literal.
+ */
+- (id)objectForLiteralString:(const char *)nullTerminatedCString;
 
 @end
 

@@ -8,4 +8,4 @@
 
 #import "OCUDLManager.h"
 
-#define $(literal) [OCUDLManager objectWithUTF8String:#literal]
+#define $(literal) [[OCUDLManager defaultManager] objectForLiteralString:#literal]
