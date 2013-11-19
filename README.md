@@ -22,7 +22,7 @@ Explore the Useful Literals section for additional examples of literals for UIKi
 
 ## Experimental
 
-OCUDL is an experiment, and might not be appropriate for your project. Please read [OCUDL In Depth](http://dbachrach.com/posts/ocudl-in-depth/) to understand what's happening behind the scenes.
+OCUDL is an experiment, and might not be appropriate for your project. Please read [OCUDL In Depth](http://dbachrach.com/posts/ocudl-in-depth/) to understand what's happening behind the scenes. **NOTE: OCUDL has been updated to not rely upon method swizzling.**
 
 ## Using OCUDL
 
