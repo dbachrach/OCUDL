@@ -89,10 +89,10 @@ typedef id (^OCUDLBlock)(NSString*, NSString*);
 /**
  * Creates an object from a literal string.
  * If a literal is not found, returns nil.
- * @param nullTerminatedCString The string literal
+ * @param str The string literal.
  * @return The created object based on the literal.
  */
-- (id)objectForLiteralString:(const char *)nullTerminatedCString;
+- (id)objectForLiteralString:(NSString *)str;
 
 @end
 
