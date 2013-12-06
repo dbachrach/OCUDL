@@ -1,6 +1,7 @@
 language: objective-c
 
 before_install:
+  - gem install cocoapods
   - cd OCUDLExample
 
 script: xctool -workspace OCUDLExample.xcworkspace -scheme 'OCUDLExample' -configuration Debug -sdk iphonesimulator -arch i386 ONLY_ACTIVE_ARCH=NO test
