@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "OCUDL"
-  s.version      = "0.1.0"
+  s.version      = "0.2.0"
   s.summary      = "User defined literals for Objective-C."
   s.homepage     = "https://github.com/dbachrach/OCUDL"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
