@@ -70,70 +70,67 @@
 																			alpha:1.0];
 												 }
 											 }
-											 else
-											 {
-												 if ([literal caseInsensitiveCompare:@"black"] == NSOrderedSame)
-												 {
-													 return [UIColor blackColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"darkGray"] == NSOrderedSame)
-												 {
-													 return [UIColor darkGrayColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"lightGray"] == NSOrderedSame)
-												 {
-													 return [UIColor lightGrayColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"white"] == NSOrderedSame)
-												 {
-													 return [UIColor whiteColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"gray"] == NSOrderedSame)
-												 {
-													 return [UIColor grayColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"red"] == NSOrderedSame)
-												 {
-													 return [UIColor redColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"green"] == NSOrderedSame)
-												 {
-													 return [UIColor greenColor];
-												 }
-												 
-												 else if ([literal caseInsensitiveCompare:@"blue"] == NSOrderedSame)
-												 {
-													 return [UIColor blueColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"cyan"] == NSOrderedSame)
-												 {
-													 return [UIColor cyanColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"yellow"] == NSOrderedSame)
-												 {
-													 return [UIColor yellowColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"magenta"] == NSOrderedSame)
-												 {
-													 return [UIColor magentaColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"orange"] == NSOrderedSame)
-												 {
-													 return [UIColor orangeColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"purple"] == NSOrderedSame)
-												 {
-													 return [UIColor purpleColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"brown"] == NSOrderedSame)
-												 {
-													 return [UIColor brownColor];
-												 }
-												 else if ([literal caseInsensitiveCompare:@"clear"] == NSOrderedSame)
-												 {
-													 return [UIColor clearColor];
-												 }
-											 }
+                                             if ([literal caseInsensitiveCompare:@"black"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor blackColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"darkGray"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor darkGrayColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"lightGray"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor lightGrayColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"white"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor whiteColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"gray"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor grayColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"red"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor redColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"green"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor greenColor];
+                                             }
+                                             
+                                             else if ([literal caseInsensitiveCompare:@"blue"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor blueColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"cyan"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor cyanColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"yellow"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor yellowColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"magenta"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor magentaColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"orange"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor orangeColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"purple"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor purpleColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"brown"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor brownColor];
+                                             }
+                                             else if ([literal caseInsensitiveCompare:@"clear"] == NSOrderedSame)
+                                             {
+                                                 return [UIColor clearColor];
+                                             }
 											 return nil;
 										 }];
 
