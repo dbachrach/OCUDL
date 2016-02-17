@@ -49,7 +49,7 @@ Then install the Podfile:
 pod install
 ```
 
-CocoaPods will create a `.xcworkspace` for you if you haven't already created one. You will need to open your code in XCode through the workspace file and not the `.xcodeproj` file from now on.
+CocoaPods will create a `.xcworkspace` for you if you haven't already created one. You will need to open your code in Xcode through the workspace file and not the `.xcodeproj` file from now on.
 
 Now your project is all set to start using OCUDL. Get started by importing the header:
 
